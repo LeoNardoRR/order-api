@@ -1,31 +1,27 @@
-// transforma payload externo para formato do bd
-function mapIncomingToOrder(body) {
-  if (!body || !body.numeroPedido) {
-    const err = new Error('numeroPedido obrigatório');
-    err.status = 400;
-    throw err;
+// src/utils/mapper.js
+export function mapIncomingToOrderModel(payload) {
+  return {
+    orderId: payload.numeroPedido,
+    value: payload.valorTotal,
+    creationDate: new Date(payload.dataCriacao),
+    items: (payload.items || []).map((i) => ({
+      productId: Number(i.idItem),
+      quantity: i.quantidadeItem,
+      price: i.valorItem
+    }))
+  };
+}
+
+export function mapUpdateIncomingToOrderModel(payload) {
+  const mapped = {};
+  if (payload.valorTotal !== undefined) mapped.value = payload.valorTotal;
+  if (payload.dataCriacao !== undefined) mapped.creationDate = new Date(payload.dataCriacao);
+  if (payload.items !== undefined) {
+    mapped.items = payload.items.map((i) => ({
+      productId: Number(i.idItem),
+      quantity: i.quantidadeItem,
+      price: i.valorItem
+    }));
   }
-
-  return {
-    orderId: body.numeroPedido,
-    value: body.valorTotal,
-    creationDate: body.dataCriacao ? new Date(body.dataCriacao) : new Date(),
-    items: Array.isArray(body.items) ? body.items.map(it => ({
-      productId: Number(it.idItem),
-      quantity: Number(it.quantidadeItem),
-      price: Number(it.valorItem)
-    })) : []
-  };
+  return mapped;
 }
-
-// opcional: mapear saída do DB para retorno ao cliente
-function mapOrderToResponse(orderDoc) {
-  return {
-    orderId: orderDoc.orderId,
-    value: orderDoc.value,
-    creationDate: orderDoc.creationDate,
-    items: orderDoc.items
-  };
-}
-
-module.exports = { mapIncomingToOrder, mapOrderToResponse };
