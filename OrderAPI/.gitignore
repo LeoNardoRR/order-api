@@ -1,0 +1,30 @@
+# Dependências
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Variáveis de ambiente
+.env
+.env.*
+
+# Build e cache
+dist/
+build/
+.cache/
+coverage/
+
+# Arquivos temporários
+*.pid
+*.seed
+*.tsbuildinfo
+
+# Configurações do editor
+.vscode/
+.DS_Store
+
+# Outros
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
