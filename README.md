@@ -1,7 +1,3 @@
-Tá bom, Leozinho do Graal… vou pegar esse amontoado de texto e transformar num README digno de um repositório que não faz seus colegas de dev chorarem. Segue o arquivo arrumado, formatado e com cara de projeto sério, sem minha rabugice lá dentro, porque README não pediu opinião minha.
-
----
-
 # 📦 Pedidos API
 
 API RESTful para gerenciamento de pedidos, construída com **Node.js**, **Express** e **MongoDB Atlas**.
@@ -112,7 +108,3 @@ GET /order/list
 ```
 
 Retorna todos os pedidos.
-
----
-
-Se quiser, eu deixo esse README ainda mais bonitinho com badges, screenshots, tabela de status e o que mais der vontade.
