@@ -1,55 +1,77 @@
-Pedidos API
-Uma API RESTful desenvolvida em Node.js para gerenciamento de pedidos, com persistência em MongoDB e transformação de dados. 
+📦 Pedidos API
+Uma API RESTful para gerenciamento de pedidos, construída com Node.js, Express e MongoDB Atlas. Ideal para aplicações de e-commerce, sistemas internos ou qualquer serviço que precise registrar, consultar e manipular pedidos.
 
-Tecnologias utilizadas
-- Node.js + Express
-- MongoDB + Mongoose
-- Joi (validação)
-- Dotenv (variáveis de ambiente)
-- Morgan (logs de requisição)
-- Postman (testes)
-- Git + GitHub
+🚀 Tecnologias Utilizadas
+Node.js + Express — Backend leve e rápido
 
-Estrutura do projeto:
-OrderAPI/
-├── src/
-│   ├── config/          # Conexão com MongoDB
-│   ├── controllers/     # Lógica dos endpoints
-│   ├── models/          # Schemas do banco
-│   ├── routes/          # Definição das rotas
-│   ├── services/        # Regras de negócio
-│   ├── utils/           # Mapeamento e erros
-│   └── validations/     # Validação com Joi
-├── .env                 # Variáveis de ambiente
-├── package.json         # Dependências
-├── README.md            # Documentação
-└── server.js            # Ponto de entrada
+MongoDB Atlas — Banco de dados NoSQL em nuvem
 
-Instalação e execução
+Mongoose — ODM para modelagem de dados
 
-# Clonar o repositório
-git clone https://github.com/LeoNardoRR/order-api.git
-cd order-api
+Joi — Validação de dados
 
-# Instalar dependências
-npm install
+Render — Deploy automático e gratuito
 
-# Criar arquivo .env
-touch .env
+Postman (VS Code) — Testes de endpoints
 
-Exemplo de .env:
-MONGO_URI=mongodb://localhost:27017/MeuBanco
-PORT=3000
+📁 Estrutura de Pastas
+Code
+src/
+├── app.js               # Configuração do Express
+├── server.js            # Inicialização do servidor
+├── config/
+│   └── db.js            # Conexão com MongoDB Atlas
+├── controllers/
+│   └── order.controller.js  # Lógica das rotas
+├── models/
+│   └── Order.js         # Schema do pedido
+├── routes/
+│   └── order.routes.js  # Definição das rotas
+├── services/
+│   └── order.service.js # Acesso ao banco
+├── utils/
+│   ├── errors.js        # Tratamento de erros
+│   └── mapper.js        # Mapeamento de dados
+├── validations/
+│   └── order.schema.js  # Validação com Joi
+🔐 Variáveis de Ambiente
+Configure a variável MONGO_URI no Render ou .env local:
 
-Iniciar a API
-npm run dev
+env
+MONGO_URI=mongodb+srv://<usuario>:<senha>@cluster1.xxxxx.mongodb.net/PedidosAPI?retryWrites=true&w=majority&appName=Cluster1
+⚠️ Se sua senha tiver @, substitua por %40
 
-Endpoints disponíveis:
+📌 Endpoints
+Método	Rota	Descrição
+POST	/order	Criar novo pedido
+GET	/order/list	Listar todos os pedidos
+GET	/order/:orderId	Buscar pedido por ID
+PUT	/order/:orderId	Atualizar pedido por ID
+DELETE	/order/:orderId	Deletar pedido por ID
+📦 Exemplo de Pedido (JSON)
+json
+{
+  "numeroPedido": "pedido-001",
+  "valorTotal": 150,
+  "dataCriacao": "2025-11-30T18:15:00.000Z",
+  "items": [
+    {
+      "idItem": "101",
+      "quantidadeItem": 2,
+      "valorItem": 75
+    }
+  ]
+}
+🧪 Testes com Postman
+Use o Postman dentro do VS Code ou app externo
 
-POST	/order - Criar novo pedido
-GET	/order/:orderId	- Buscar pedido por ID
-GET	/order/list	- Listar todos os pedidos
-PUT	/order/:orderId	- Atualizar pedido
-DELETE	/order/:orderId	- Deletar pedido
+Configure requisições para cada rota
 
+Teste com diferentes payloads e valide os retornos
 
+🌐 Deploy
+A API está publicada em:
+
+Code
+https://order-api-h5fv.onrender.com
+Exemplo: GET /order/list → retorna todos os pedidos
