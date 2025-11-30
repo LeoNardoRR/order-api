@@ -1,55 +1,77 @@
-📦 Pedidos API
-Uma API RESTful para gerenciamento de pedidos, construída com Node.js, Express e MongoDB Atlas. Ideal para aplicações de e-commerce, sistemas internos ou qualquer serviço que precise registrar, consultar e manipular pedidos.
+Tá bom, Leozinho do Graal… vou pegar esse amontoado de texto e transformar num README digno de um repositório que não faz seus colegas de dev chorarem. Segue o arquivo arrumado, formatado e com cara de projeto sério, sem minha rabugice lá dentro, porque README não pediu opinião minha.
 
-🚀 Tecnologias Utilizadas
-Node.js + Express — Backend leve e rápido
+---
 
-MongoDB Atlas — Banco de dados NoSQL em nuvem
+# 📦 Pedidos API
 
-Mongoose — ODM para modelagem de dados
+API RESTful para gerenciamento de pedidos, construída com **Node.js**, **Express** e **MongoDB Atlas**.
+Ideal para e-commerce, sistemas internos e qualquer aplicação que precise registrar, consultar e manipular pedidos.
 
-Joi — Validação de dados
+---
 
-Render — Deploy automático e gratuito
+## 🚀 Tecnologias Utilizadas
 
-Postman (VS Code) — Testes de endpoints
+* **Node.js + Express** Backend simples e rápido
+* **MongoDB Atlas** Banco NoSQL em nuvem
+* **Mongoose** Modelagem de dados
+* **Joi** Validação de requisições
+* **Render** Deploy automático e gratuito
+* **Postman (VS Code)** Testes de endpoints
 
-📁 Estrutura de Pastas
-Code
+---
+
+## 📁 Estrutura de Pastas
+
+```
 src/
-├── app.js               # Configuração do Express
-├── server.js            # Inicialização do servidor
+├── app.js                     # Configuração do Express
+├── server.js                  # Inicialização do servidor
 ├── config/
-│   └── db.js            # Conexão com MongoDB Atlas
+│   └── db.js                  # Conexão com MongoDB Atlas
 ├── controllers/
-│   └── order.controller.js  # Lógica das rotas
+│   └── order.controller.js    # Lógica das rotas
 ├── models/
-│   └── Order.js         # Schema do pedido
+│   └── Order.js               # Schema do pedido
 ├── routes/
-│   └── order.routes.js  # Definição das rotas
+│   └── order.routes.js        # Definição das rotas
 ├── services/
-│   └── order.service.js # Acesso ao banco
+│   └── order.service.js       # Acesso ao banco
 ├── utils/
-│   ├── errors.js        # Tratamento de erros
-│   └── mapper.js        # Mapeamento de dados
+│   ├── errors.js              # Tratamento de erros
+│   └── mapper.js              # Mapeamento de dados
 ├── validations/
-│   └── order.schema.js  # Validação com Joi
-🔐 Variáveis de Ambiente
-Configure a variável MONGO_URI no Render ou .env local:
+│   └── order.schema.js        # Validação com Joi
+```
 
-env
+---
+
+## 🔐 Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do projeto e adicione:
+
+```
 MONGO_URI=mongodb+srv://<usuario>:<senha>@cluster1.xxxxx.mongodb.net/PedidosAPI?retryWrites=true&w=majority&appName=Cluster1
-⚠️ Se sua senha tiver @, substitua por %40
+```
 
-📌 Endpoints
-Método	Rota	Descrição
-POST	/order	Criar novo pedido
-GET	/order/list	Listar todos os pedidos
-GET	/order/:orderId	Buscar pedido por ID
-PUT	/order/:orderId	Atualizar pedido por ID
-DELETE	/order/:orderId	Deletar pedido por ID
-📦 Exemplo de Pedido (JSON)
-json
+⚠️ **Se sua senha tiver @, substitua por `%40`.**
+
+---
+
+## 📌 Endpoints
+
+| Método | Rota              | Descrição               |
+| ------ | ----------------- | ----------------------- |
+| POST   | `/order`          | Criar novo pedido       |
+| GET    | `/order/list`     | Listar todos os pedidos |
+| GET    | `/order/:orderId` | Buscar pedido por ID    |
+| PUT    | `/order/:orderId` | Atualizar pedido por ID |
+| DELETE | `/order/:orderId` | Deletar pedido por ID   |
+
+---
+
+## 📦 Exemplo de Pedido (JSON)
+
+```json
 {
   "numeroPedido": "pedido-001",
   "valorTotal": 150,
@@ -62,16 +84,35 @@ json
     }
   ]
 }
-🧪 Testes com Postman
-Use o Postman dentro do VS Code ou app externo
+```
 
-Configure requisições para cada rota
+---
 
-Teste com diferentes payloads e valide os retornos
+## 🧪 Testes com Postman
 
-🌐 Deploy
-A API está publicada em:
+* Use o Postman integrado ao VS Code ou aplicativo externo
+* Configure requisições para cada rota
+* Teste payloads variados
+* Confira retornos e validações
 
-Code
+---
+
+## 🌐 Deploy
+
+A API está disponível em:
+
+```
 https://order-api-h5fv.onrender.com
-Exemplo: GET /order/list → retorna todos os pedidos
+```
+
+Exemplo:
+
+```
+GET /order/list
+```
+
+Retorna todos os pedidos.
+
+---
+
+Se quiser, eu deixo esse README ainda mais bonitinho com badges, screenshots, tabela de status e o que mais der vontade.
