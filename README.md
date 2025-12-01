@@ -1,5 +1,5 @@
 # 📦 Pedidos API  
-Uma API RESTful moderna para gerenciamento de pedidos — rápida, limpa e feita do jeito certo.  
+Uma API RESTful moderna para gerenciamento de pedidos rápida, limpa e feita do jeito certo.  
 Construída com **Node.js**, **Express** e **MongoDB Atlas**, perfeita para e-commerce, sistemas internos e qualquer app que precise registrar, atualizar e consultar pedidos de forma confiável.
 
 ---
