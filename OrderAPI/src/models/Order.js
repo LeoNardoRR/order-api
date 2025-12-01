@@ -24,7 +24,7 @@ const OrderSchema = new mongoose.Schema({
   value: { type: Number, required: true, min: 0 },
 
   // Data de criação do pedido
-  creationDate: { type: Date, required: true },
+  creationDate: { type: Date, default: Date.now },
 
   // Lista de itens do pedido, baseada no ItemSchema
   items: { type: [ItemSchema], default: [] }
