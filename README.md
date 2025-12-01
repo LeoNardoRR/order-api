@@ -1,72 +1,72 @@
-# 📦 Pedidos API
-
-API RESTful para gerenciamento de pedidos, construída com **Node.js**, **Express** e **MongoDB Atlas**.
-Ideal para e-commerce, sistemas internos e qualquer aplicação que precise registrar, consultar e manipular pedidos.
-
----
-
-## 🚀 Tecnologias Utilizadas
-
-* **Node.js + Express** Backend simples e rápido
-* **MongoDB Atlas** Banco NoSQL em nuvem
-* **Mongoose** Modelagem de dados
-* **Joi** Validação de requisições
-* **Render** Deploy automático e gratuito
-* **Postman (VS Code)** Testes de endpoints
+# 📦 Pedidos API  
+Uma API RESTful moderna para gerenciamento de pedidos — rápida, limpa e feita do jeito certo.  
+Construída com **Node.js**, **Express** e **MongoDB Atlas**, perfeita para e-commerce, sistemas internos e qualquer app que precise registrar, atualizar e consultar pedidos de forma confiável.
 
 ---
 
-## 📁 Estrutura de Pastas
+## ⚙️ Stack Tecnológica
+
+- **Node.js + Express** — servidor leve, performático e sem mimimi  
+- **MongoDB Atlas** — NoSQL flexível, escalável e na nuvem  
+- **Mongoose** — schema, validação e queries organizadas  
+- **Joi** — blindagem contra payloads zoado  
+- **Render** — deploy fácil  
+- **Postman** — testes dos endpoints  
+
+---
+
+## 📂 Estrutura do Projeto
 
 ```
+
 src/
-├── app.js                     # Configuração do Express
-├── server.js                  # Inicialização do servidor
+├── app.js                     # Inicialização do Express
+├── server.js                  # Start do servidor
 ├── config/
 │   └── db.js                  # Conexão com MongoDB Atlas
 ├── controllers/
-│   └── order.controller.js    # Lógica das rotas
+│   └── order.controller.js    # Regras de negócio / respostas HTTP
 ├── models/
-│   └── Order.js               # Schema do pedido
+│   └── Order.js               # Schema do Pedido
 ├── routes/
-│   └── order.routes.js        # Definição das rotas
+│   └── order.routes.js        # Rotas da API
 ├── services/
-│   └── order.service.js       # Acesso ao banco
+│   └── order.service.js       # CRUD e acesso ao banco
 ├── utils/
-│   ├── errors.js              # Tratamento de erros
-│   └── mapper.js              # Mapeamento de dados
+│   ├── errors.js              # Erros customizados
+│   └── mapper.js              # Mapeamento/normalização das respostas
 ├── validations/
-│   └── order.schema.js        # Validação com Joi
+│   └── order.schema.js        # Validação via Joi
+
 ```
 
 ---
 
-## 🔐 Variáveis de Ambiente
+## 🔐 Configuração (.env)
 
-Crie um arquivo `.env` na raiz do projeto e adicione:
+Crie um arquivo `.env` na raiz:
 
 ```
-MONGO_URI=mongodb+srv://<usuario>:<senha>@cluster1.xxxxx.mongodb.net/PedidosAPI?retryWrites=true&w=majority&appName=Cluster1
-```
 
-⚠️ **Se sua senha tiver @, substitua por `%40`.**
+MONGO_URI=mongodb+srv://<user>:<senha>@cluster1.xxx.mongodb.net/PedidosAPI
+
+````
+
+⚠️ Senha com `@` → substitua por `%40`.
 
 ---
 
-## 📌 Endpoints
+# 🛣️ Rotas da API
 
-| Método | Rota              | Descrição               |
-| ------ | ----------------- | ----------------------- |
-| POST   | `/order`          | Criar novo pedido       |
-| GET    | `/order/list`     | Listar todos os pedidos |
-| GET    | `/order/:orderId` | Buscar pedido por ID    |
-| PUT    | `/order/:orderId` | Atualizar pedido por ID |
-| DELETE | `/order/:orderId` | Deletar pedido por ID   |
+Todas as rotas começam com:  
+👉 `https://order-api-h5fv.onrender.com`
 
 ---
 
-## 📦 Exemplo de Pedido (JSON)
+## ➕ Criar Pedido  
+**POST** `/order`
 
+### Body:
 ```json
 {
   "numeroPedido": "pedido-001",
@@ -80,31 +80,107 @@ MONGO_URI=mongodb+srv://<usuario>:<senha>@cluster1.xxxxx.mongodb.net/PedidosAPI?
     }
   ]
 }
+````
+
+### Possíveis retornos:
+
+* **201** Criado com sucesso
+* **400** Payload inválido (Joi brigou com você)
+
+---
+
+## 📄 Listar Todos
+
+**GET** `/order/list`
+Retorna *todos* os pedidos.
+
+Retorno (exemplo):
+
+```json
+[
+  {
+    "_id": "674b9bd3d7ae022f20bb75e1",
+    "numeroPedido": "pedido-001",
+    "valorTotal": 150,
+    "items": [...]
+  }
+]
 ```
 
 ---
 
-## 🧪 Testes com Postman
+## 🔎 Buscar por ID
 
-* Use o Postman integrado ao VS Code ou aplicativo externo
-* Configure requisições para cada rota
-* Teste payloads variados
-* Confira retornos e validações
+**GET** `/order/:orderId`
+
+* **200** Pedido encontrado
+* **404** Esse ID aí não existe, jovem
 
 ---
 
-## 🌐 Deploy
+## ✏️ Atualizar Pedido
 
-A API está disponível em:
-
-```
-https://order-api-h5fv.onrender.com
-```
+**PUT** `/order/:orderId`
+Aceita alteração total ou parcial.
 
 Exemplo:
 
-```
-GET /order/list
+```json
+{
+  "valorTotal": 199.9
+}
 ```
 
-Retorna todos os pedidos.
+---
+
+## 🗑️ Excluir Pedido
+
+**DELETE** `/order/:orderId`
+
+* **200** Pedido removido
+* **404** Pedido não encontrado
+
+---
+
+# 📦 Estrutura do Pedido (Schema)
+
+```json
+{
+  "_id": "string",
+  "numeroPedido": "string",
+  "valorTotal": "number",
+  "dataCriacao": "date",
+  "items": [
+    {
+      "idItem": "string",
+      "quantidadeItem": "number",
+      "valorItem": "number"
+    }
+  ]
+}
+```
+
+---
+
+# 🧪 Testando no Postman
+
+* Teste cada método (POST, GET, PUT, DELETE)
+* Alterne entre payloads válidos e inválidos
+* Confira validações do Joi
+* Valide mensagens de erro + status HTTP
+
+---
+
+# 🌐 Deploy
+
+API rodando em:
+
+👉 **[https://order-api-h5fv.onrender.com](https://order-api-h5fv.onrender.com)**
+
+Rotas diretas:
+
+* **GET** `/order/list`
+* **POST** `/order`
+* **GET** `/order/<id>`
+* **PUT** `/order/<id>`
+* **DELETE** `/order/<id>`
