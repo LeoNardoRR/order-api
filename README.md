@@ -6,10 +6,10 @@ Construída com **Node.js**, **Express** e **MongoDB Atlas**, perfeita para e-co
 
 ## ⚙️ Stack Tecnológica
 
-- **Node.js + Express** — servidor leve, performático e sem mimimi  
+- **Node.js + Express** — servidor leve  
 - **MongoDB Atlas** — NoSQL flexível, escalável e na nuvem  
 - **Mongoose** — schema, validação e queries organizadas  
-- **Joi** — blindagem contra payloads zoado  
+- **Joi** — blindagem contra payloads  
 - **Render** — deploy fácil  
 - **Postman** — testes dos endpoints  
 
@@ -85,7 +85,7 @@ Todas as rotas começam com:
 ### Possíveis retornos:
 
 * **201** Criado com sucesso
-* **400** Payload inválido (Joi brigou com você)
+* **400** Payload inválido 
 
 ---
 
@@ -114,7 +114,7 @@ Retorno (exemplo):
 **GET** `/order/:orderId`
 
 * **200** Pedido encontrado
-* **404** Esse ID aí não existe, jovem
+* **404** Esse ID aí não existe
 
 ---
 
